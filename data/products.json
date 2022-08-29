@@ -1,0 +1,23 @@
+[
+    {
+        "name" : "Pineapple",
+        "imageURL" : "https://picsum.photos/200",
+        "price" : 4
+    },
+    {
+        "name" : "Apples",
+        "imageURL" : "https://picsum.photos/200",
+        "price" : 5
+    },
+    {
+        "name" : "Tomato",
+        "imageURL" : "https://picsum.photos/200",
+        "price" : 3
+    },
+    {
+        "name" : "Asparagus",
+        "imageURL" : "https://picsum.photos/200",
+        "price" : 2
+    }
+
+]

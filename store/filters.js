@@ -8,7 +8,9 @@ export const useFiltersStore = defineStore({
       filtersList: ['youtube', 'twitch'],
     }
   },
-  actions: {},
+  actions: {
+    
+  },
   getters: {
     getFiltersList: state => state.filtersList,
   },
