@@ -44,16 +44,19 @@
       </div>
       <div v-else>
         <h3>There are {{cartStore.count }} items in your cart</h3>
-        <div v-for="(items, name) in cartStore.grouped" :key="items.name">
-          <div>
+        <div class="mt-2" v-for="(items, name) in cartStore.grouped" :key="items.name">
+          <div class="flex flex-row items-center">
             <span>{{name}}</span>
             <span class="ml-4">Count: {{items.length}}</span>
-            <span class="ml-4">Sub Total: $ {{subTotal(items.length, items[0].price)}}</span>            
+            <span class="ml-4">Sub Total: $ {{subTotal(items.length, items[0].price)}}</span>
+            <span class="ml-4 flex items-center"><i class="material-icons-outlined" @click="cartStore.removeItem(items[0].name)">delete</i></span>        
           </div>          
         </div>
-        <div>
+        <div class="mt-6">
           <h1 class="text-3xl">Total: ${{cartStore.total}}</h1>
         </div>
+
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="cartStore.$reset">Clear cart</button>        
       </div>   
   </div>
 </template>
@@ -90,4 +93,5 @@ const addToCart = (product) => {
 const subTotal = (count, price) => {
   return (parseInt(count)  * parseInt(price))
 }
+
 </script>
