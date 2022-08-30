@@ -1,5 +1,6 @@
 import {defineStore} from 'pinia'
 import _ from 'lodash'
+import { useUserStore } from "@/store/user"
 
 export const useCartStore = defineStore({
     id: 'cart-store',
@@ -10,18 +11,30 @@ export const useCartStore = defineStore({
         }
     },
     actions: {
+        // calling another store from this store
+        checkout() {
+            const userStore = useUserStore()
+            alert(`username is ${userStore.username}`)
+        },
+
         addItems(item) {            
             //using spread operator to clone it
             this.items.push({...item})
         },
 
         removeItem(name) {
+
+            // MY SOLUTION
+            /*
             // group items by name
             const groupItems = _.groupBy(this.items, item => item.name)
             // remove the item
             const newGroup = _.omit(groupItems, name)
             this.items = _.flatMap(newGroup)
-            // return _.omit(groupedItems, name)
+            */
+
+            // Instructor solution
+            this.items = this.items.filter((item) => item.name !== name)
         }
 
     },
