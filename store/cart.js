@@ -1,12 +1,14 @@
 import {defineStore} from 'pinia'
 import _ from 'lodash'
 import { useUserStore } from "@/store/user"
+import { useLocalStorage } from "@vueuse/core";
 
-export const useCartStore = defineStore({
+export const useCartStore = defineStore("CartStore", {
+    historyEnabled: true,
     id: 'cart-store',
     state: () => {
         return {
-            items: [],
+            items: useLocalStorage("CartStore:items", []),
             test: "hello world",    
         }
     },
