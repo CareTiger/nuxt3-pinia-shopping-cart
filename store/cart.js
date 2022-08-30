@@ -10,8 +10,12 @@ export const useCartStore = defineStore({
     },
     actions: {
         addItems(item) {            
-            this.items.push(item)
+            //using spread operator to clone it
+            this.items.push({...item})
         }
     },
-    getters: {}
+    getters: {
+        count: (state) => state.items.length
+
+    }
 })

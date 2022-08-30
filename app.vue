@@ -5,7 +5,7 @@
     <Link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"></Link>
   </Head>
   <!-- Store -->
-  <div class="serif mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-gray-200 container mx-auto">
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-gray-200 container mx-auto">
     <div class="flex place-content-around" v-for="product in products" :key="product">
       <div class="max-w-sm m-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
@@ -15,7 +15,10 @@
             <a href="#">
                 <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{product.name}}</h1>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Price : {{product.price}}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              <span class="font-Rampart text-xl">Price : </span>
+              <span>{{product.price}}</span>
+              </p>
         </div>
 
         <CountInput v-model="product.count" />
@@ -28,8 +31,15 @@
   </div>
 
   <!--Cart-->
-  <div class="border border-gray-200 container mx-auto mt-6">
+  <div class="border border-blue-400 container mx-auto mt-6 h-full flex flex-col">
       <h1 class="text-2xl">Cart</h1> 
+      <div class="relative">
+        <span class="float-right inline-block">                
+          <i class="material-icons-outlined text-7xl bg-gray-200 rounded-full p-8 ">shopping_cart</i> 
+          <div class="absolute top-0 right-0 block p-3 rounded-full bg-green-400 ring-2 ring-white text-3xl">{{ cartStore.count }}</div>                       
+        </span>
+      </div>      
+      <p>sdfgdsfg</p>    
   </div>
 </template>
 
@@ -57,6 +67,8 @@ productsStore.fill();
 const cartStore = reactive(useCartStore ());
 
 const addToCart = (product) => {
+  for(let index=0; index < product.count; index++ ) {
     cartStore.addItems(product)
+  }
 }
 </script>
