@@ -39,7 +39,22 @@
           <div class="absolute top-0 right-0 block p-3 rounded-full bg-green-400 ring-2 ring-white text-3xl">{{ cartStore.count }}</div>                       
         </span>
       </div>      
-      <p>sdfgdsfg</p>    
+      <div v-if="cartStore.isEmpty">
+        <h3>Your Cart is empty</h3>
+      </div>
+      <div v-else>
+        <h3>There are {{cartStore.count }} items in your cart</h3>
+        <div v-for="(items, name) in cartStore.grouped" :key="items.name">
+          <div>
+            <span>{{name}}</span>
+            <span class="ml-4">Count: {{items.length}}</span>
+            <span class="ml-4">Sub Total: $ {{subTotal(items.length, items[0].price)}}</span>            
+          </div>          
+        </div>
+        <div>
+          <h1 class="text-3xl">Total: ${{cartStore.total}}</h1>
+        </div>
+      </div>   
   </div>
 </template>
 
@@ -70,5 +85,9 @@ const addToCart = (product) => {
   for(let index=0; index < product.count; index++ ) {
     cartStore.addItems(product)
   }
+}
+
+const subTotal = (count, price) => {
+  return (parseInt(count)  * parseInt(price))
 }
 </script>
