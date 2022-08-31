@@ -66,6 +66,8 @@
 </template>
 
 <script setup>
+  // TODO Change "Add to Cart" to "Update Cart" on adding an item to the card
+  
 import { useFiltersStore } from '~/store/filters';
 import { useProductsStore } from './store/products';
 import { useCartStore } from '~/store/cart';
