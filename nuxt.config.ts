@@ -11,7 +11,7 @@ export default defineNuxtConfig({
             ],
         },    
     modules: [
-        '@nuxtjs/tailwindcss', '@vueuse/nuxt'
+        '@nuxtjs/tailwindcss', '@vueuse/nuxt', '@nuxtjs/color-mode',
     ],
     buildModules: ['@pinia/nuxt'],
 })

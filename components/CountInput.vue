@@ -20,7 +20,7 @@
         <i class="material-icons-outlined">remove</i>  
         </button>
 
-        <input
+        <input class="dark:bg-gray-800"
             :value="modelValue"
             type="number"
             min="0"

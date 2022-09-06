@@ -4,20 +4,31 @@
     <Meta name="description" content="My app description"/>
     <Link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"></Link>
   </Head>
+  <header div="">
+    <nav class="flex flex-row items-center justify-between bg-white dark:text-white dark:bg-slate-600 h-24">
+      <h1 class="ml-4 text-3xl">Pinia Store</h1>
+      <div class="relative m-1">
+        <span class="float-right inline-block">                
+          <i class="material-icons-outlined text-xl bg-gray-400 rounded-full p-4 ">shopping_cart</i> 
+          <div class="absolute top-0 right-0 block p-2 rounded-full bg-green-400 ring-2 ring-white text-xs">{{ cartStore.count }}</div>                       
+        </span>
+      </div>        
+    </nav>
+  </header>
   <!-- Store -->
-  <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-gray-200 container mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-gray-200 container mx-auto bg-white dark:text-white dark:bg-slate-600">
     <div class="flex place-content-around" v-for="product in products" :key="product">
-      <div class="max-w-sm m-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class="w-full m-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-        <img class="rounded-t-lg" :src="product.imageURL" alt="" />
+        <img class="rounded-t-lg h-64 w-full object-cover" :src="product.imageURL" alt="" />
 
         <div class="p-5">
             <a href="#">
                 <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{product.name}}</h1>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              <span class="font-Rampart text-xl">Price : </span>
-              <span>{{product.price}}</span>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
+              <span class="text-xl">Price : </span>
+              <span>$ {{product.price}}</span>
               </p>
         </div>
 
@@ -31,14 +42,9 @@
   </div>
 
   <!--Cart-->
-  <div class="border border-blue-400 container mx-auto mt-6 h-full flex flex-col">
+  <div class="border border-blue-400 container mx-auto h-full flex flex-col bg-white dark:text-white dark:bg-slate-600">
       <h1 class="text-2xl">Cart</h1> 
-      <div class="relative">
-        <span class="float-right inline-block">                
-          <i class="material-icons-outlined text-7xl bg-gray-200 rounded-full p-8 ">shopping_cart</i> 
-          <div class="absolute top-0 right-0 block p-3 rounded-full bg-green-400 ring-2 ring-white text-3xl">{{ cartStore.count }}</div>                       
-        </span>
-      </div>      
+    
       <div v-if="cartStore.isEmpty">
         <h3>Your Cart is empty</h3>
       </div>
