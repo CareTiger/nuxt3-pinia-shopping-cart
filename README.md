@@ -1,6 +1,8 @@
-# Source code
-https://github.com/vueschool/pinia-the-enjoyable-vue-store
-
+# TODO use vuecore to persist the store Locally
+# TODO Navigation
+# TODO change password
+# TODO make the shopping cart a slide out modal
+# TODO Fix global styling
 
 # Nuxt 3 Minimal Starter
 
